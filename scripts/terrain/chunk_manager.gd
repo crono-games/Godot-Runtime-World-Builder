@@ -117,8 +117,12 @@ func _get_active_modes() -> Dictionary:
 		return result
 
 	for action in input_map[current_mode]:
-		if Input.is_action_pressed(action):
-			result.merge(input_map[current_mode][action])
+		if current_mode == EditorMode.PROP:
+			if Input.is_action_just_pressed(action):
+				result.merge(input_map[current_mode][action])
+		else:
+			if Input.is_action_pressed(action):
+				result.merge(input_map[current_mode][action])
 
 	return result
 
