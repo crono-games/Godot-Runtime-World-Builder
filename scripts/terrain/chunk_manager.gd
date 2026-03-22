@@ -330,4 +330,4 @@ func save_world():
 	var scene = PackedScene.new()
 	scene.pack(get_tree().current_scene)
 
-	ResourceSaver.save(scene, "res://worlds/world_01/world4.tscn")
+	ResourceSaver.save(scene, "res://saved_maps/test_map.tscn")
