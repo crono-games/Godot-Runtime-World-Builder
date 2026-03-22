@@ -18,27 +18,22 @@ func _ready() -> void:
 	camera = player.camera
 
 func _input(event: InputEvent) -> void:
-	# Toggle between local and global space
-
 	if !gizmo.editing and Input.is_action_just_pressed("shortcut_selection"):
 		gizmo.use_local_space = !gizmo.use_local_space
-	# Prevent object picking if user is interacting with the gizmo
 	if gizmo.hovering || gizmo.editing:
 		return;
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		# Raycast from the camera
 		
 		pick_vertex
 		var dir := camera.project_ray_normal(event.position)
 		var from := camera.project_ray_origin(event.position)
 		var params = PhysicsRayQueryParameters3D.new()
-		params.collision_mask = 2 # Ejemplo: solo capa 2
+		params.collision_mask = 2
 		params.from = from
 		params.to = from + dir * 1000.0
 		var result = get_world_3d().direct_space_state.intersect_ray(params)
 		if result.size() == 0:
 			return
-		# If shift is held, add/remove the node to/from the target list. Otherwise set the target to just that node.
 		var collider = result["collider"] as Node3D
 		selected_node = collider
 		if !_add:
@@ -47,14 +42,8 @@ func _input(event: InputEvent) -> void:
 			return
 		if !gizmo.deselect(selected_node):
 			gizmo.select(selected_node)
-	
-	#if selected_node and Input.is_action_just_pressed("delete"):
-		#gizmo.deselect(selected_node)
-		#selected_node.queue_free()
-
 
 func pick_vertex(ray_origin: Vector3, ray_dir: Vector3, vertex: Vector3, camera: Camera3D, radius: float = 0.1) -> bool:
-	# Construir un triángulo “plano” frente a la cámara
 	var cam_dir = (vertex - camera.global_transform.origin).normalized()
 	var up = camera.global_transform.basis.y
 	var right = cam_dir.cross(up).normalized()

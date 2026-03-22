@@ -1,7 +1,6 @@
-[gd_scene load_steps=56 format=4 uid="uid://bgd6808ftw6u4"]
+[gd_scene load_steps=55 format=4 uid="uid://bgd6808ftw6u4"]
 
 [ext_resource type="Script" uid="uid://3x5wkbhdapkq" path="res://scripts/player/player.gd" id="1_0s3u6"]
-[ext_resource type="Script" uid="uid://blbo4gwrmwqbp" path="res://scripts/player/jump_action.gd" id="2_enrq2"]
 [ext_resource type="Script" uid="uid://c8bpxlv1w8wrf" path="res://scripts/player/camera.gd" id="2_so2s4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr6dx"]
@@ -17937,8 +17936,3 @@ camera = NodePath("Camera3D")
 [node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=1843145729]
 transform = Transform3D(-1, -8.742278e-08, 0, 4.3711385e-08, -0.49999997, 0.86602545, -7.5710346e-08, 0.86602545, 0.49999997, 0, 0, 0)
 v_offset = 1.0
-
-[node name="JumpAction" type="Node3D" parent="." unique_id=2141513184 node_paths=PackedStringArray("player")]
-script = ExtResource("2_enrq2")
-player = NodePath("..")
-jump_velocity = 8.0

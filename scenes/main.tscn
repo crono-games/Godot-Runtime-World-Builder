@@ -49,6 +49,12 @@ background_color = Color(0.32049134, 0.32049137, 0.32049137, 1)
 
 [node name="Main" type="Node3D" unique_id=1362792653]
 
+[node name="Player" parent="." unique_id=1022704646 instance=ExtResource("5_tbgi4")]
+floor_stop_on_slope = false
+floor_max_angle = 3.1415927
+move_speed = 50.0
+vertical_speed = 60.0
+
 [node name="ChunkManager" type="Node3D" parent="." unique_id=1512712758 node_paths=PackedStringArray("player", "cursor")]
 script = ExtResource("1_o5qli")
 player = NodePath("../Player")
@@ -163,46 +169,92 @@ world_manager = NodePath("..")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1471195742]
 transform = Transform3D(1, 0, 0, 0, 0.8487318, 0.52882355, 0, -0.52882355, 0.8487318, 0, 0, 0)
 
-[node name="Player" parent="." unique_id=1022704646 instance=ExtResource("5_tbgi4")]
-floor_stop_on_slope = false
-floor_max_angle = 3.1415927
-move_speed = 50.0
-vertical_speed = 60.0
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2146886376]
 environment = SubResource("Environment_tefeu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1977889806]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=93900884]
+[node name="TextureButton" type="Button" parent="CanvasLayer" unique_id=1105503833]
+offset_top = 424.0
+offset_right = 64.0
+offset_bottom = 488.0
+tooltip_text = "Raise Left-Click
+Lower Left-Click
+Flatten - Middle Button"
+icon = ExtResource("6_85g3d")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton" unique_id=1877629787]
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -48.0
+offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
+text = "Q"
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1650544183]
+[node name="TextureButton2" type="Button" parent="CanvasLayer" unique_id=2091614811]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("6_85g3d")
-stretch_mode = 0
+offset_left = 72.0
+offset_top = 424.0
+offset_right = 136.0
+offset_bottom = 488.0
+icon = ExtResource("7_choun")
+icon_alignment = 1
+expand_icon = true
 
-[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=320508590]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("7_choun")
-stretch_mode = 0
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton2" unique_id=1724686397]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Left Click - Paint"
+text = "W"
 
-[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1215084583]
+[node name="TextureButton3" type="Button" parent="CanvasLayer" unique_id=1914323080]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("8_ya4ey")
-stretch_mode = 0
+offset_left = 140.0
+offset_top = 424.0
+offset_right = 204.0
+offset_bottom = 488.0
+icon = ExtResource("8_ya4ey")
+expand_icon = true
 
-[node name="TextureButton4" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=1207603747]
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton3" unique_id=1256649023]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "E"
+
+[node name="TextureButton4" type="Button" parent="CanvasLayer" unique_id=1115896978]
 custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("9_eb6dy")
-stretch_mode = 0
+offset_left = 208.0
+offset_top = 424.0
+offset_right = 272.0
+offset_bottom = 488.0
+icon = ExtResource("9_eb6dy")
+alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureButton4" unique_id=1554122320]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "R"
