@@ -68,7 +68,7 @@ func _initialize_material() -> void:
 	terrain_mesh.set_surface_override_material(0, material)
 
 func _initialize_collision() -> void:
-	# Duplicate shape to avoid modifying shared resource
+	## Duplicate shape to avoid modifying shared resource
 	if collision_shape.shape:
 		collision_shape.shape = collision_shape.shape.duplicate(true)
 

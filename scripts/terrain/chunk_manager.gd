@@ -31,6 +31,7 @@ var current_mode: EditorMode = EditorMode.TERRAIN
 # =========================================================
 
 @export var cursor: MeshInstance3D
+@export var grid_container: GridContainer
 
 var camera: Camera3D
 
@@ -52,6 +53,7 @@ var input_map := {}
 func _ready():
 	_initialize_chunks()
 	_initialize_input_map()
+	_setup_splatmap_bindings()
 	camera = player.camera
 
 # =========================================================
@@ -68,6 +70,10 @@ func _initialize_chunks() -> void:
 		build_chunks()
 	else:
 		reload_all_chunks()
+
+func _setup_splatmap_bindings():
+	for b : TextureButton in grid_container.get_children():
+		b.connect("pressed", _on_texture_button_pressed.bind(b))
 
 func _initialize_input_map() -> void:
 	input_map = {
@@ -331,3 +337,11 @@ func save_world():
 	scene.pack(get_tree().current_scene)
 
 	ResourceSaver.save(scene, "res://saved_maps/test_map.tscn")
+
+
+func _on_texture_button_pressed(button: TextureButton) -> void:
+	var tex = button.texture_normal
+	if tex:
+		current_color = Color(1,0,0,0)
+		for c : Chunk in chunks:
+			c.grass_texture = tex
