@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwu4q71jn83vc"]
+
+[ext_resource type="Script" uid="uid://deff1drshn8ep" path="res://scripts/terrain/chunk_manager.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://cjpy4f27k5lmr" path="res://scenes/terrain/chunk.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://cd3dedk0nleij" path="res://scripts/terrain/brush.gd" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dxwxuru23gxyk" path="res://scenes/ui/debug_overlay.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bgd6808ftw6u4" path="res://scripts/player/player.tscn" id="5_tbgi4"]
+
+[sub_resource type="Resource" id="Resource_tbgi4"]
+script = ExtResource("2_jyhfs")
+strength = 0.5
+scale_max = 94.0
+metadata/_custom_type_script = "uid://cd3dedk0nleij"
+
+[node name="Main" type="Node3D"]
+
+[node name="ChunkManager" type="Node3D" parent="." node_paths=PackedStringArray("player", "debug_overlay")]
+script = ExtResource("1_o5qli")
+player = NodePath("../Player")
+paint_interval = 2.0
+debug_overlay = NodePath("DebugOverlay")
+brush = SubResource("Resource_tbgi4")
+
+[node name="Chunk" parent="ChunkManager" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
+map_width = null
+map_depth = null
+
+[node name="Chunk2" parent="ChunkManager" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -32)
+map_width = null
+map_depth = null
+
+[node name="Chunk3" parent="ChunkManager" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -32)
+map_width = null
+map_depth = null
+
+[node name="Chunk4" parent="ChunkManager" instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 32)
+map_width = null
+map_depth = null
+
+[node name="DebugOverlay" parent="ChunkManager" instance=ExtResource("3_sugp2")]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8487318, 0.52882355, 0, -0.52882355, 0.8487318, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("5_tbgi4")]
+turn_speed = 50.0

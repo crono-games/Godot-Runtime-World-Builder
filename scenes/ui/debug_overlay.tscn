@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwxuru23gxyk"]
+
+[ext_resource type="Script" uid="uid://bsva2ng5yysym" path="res://scenes/ui/debug_overlay.gd" id="1_tasbd"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1731904324]
+script = ExtResource("1_tasbd")
+
+[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=256991463]
+offset_right = 24.0
+offset_bottom = 32.0
+title = "Debug"
+
+[node name="TextureRect" type="TextureRect" parent="FoldableContainer" unique_id=955625463]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 2

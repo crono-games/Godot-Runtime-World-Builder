@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://d236la6qpxyrv"]
+
+[ext_resource type="Script" uid="uid://deff1drshn8ep" path="res://scripts/terrain/chunk_manager.gd" id="1_kejo5"]
+[ext_resource type="Script" uid="uid://cd3dedk0nleij" path="res://scripts/terrain/brush.gd" id="2_7tr0j"]
+[ext_resource type="PackedScene" uid="uid://cjpy4f27k5lmr" path="res://scenes/terrain/chunk.tscn" id="3_bbnhl"]
+[ext_resource type="PackedScene" uid="uid://dxwxuru23gxyk" path="res://scenes/ui/debug_overlay.tscn" id="4_f17eg"]
+[ext_resource type="Texture2D" uid="uid://c3x2fhx0mnkjb" path="res://assets/ui/crosshair.png" id="5_kxs5y"]
+[ext_resource type="PackedScene" uid="uid://bgd6808ftw6u4" path="res://scripts/player/player.tscn" id="6_f31b2"]
+
+[sub_resource type="Resource" id="Resource_tbgi4"]
+script = ExtResource("2_7tr0j")
+radius_m = 2.0
+strength = 0.5
+metadata/_custom_type_script = "uid://cd3dedk0nleij"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6xl0"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+albedo_texture = ExtResource("5_kxs5y")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tipki"]
+material = SubResource("StandardMaterial3D_o6xl0")
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="ChunkManager" type="Node3D" parent="." node_paths=PackedStringArray("player", "debug_overlay")]
+script = ExtResource("1_kejo5")
+player = NodePath("../Player")
+paint_interval = 2.0
+debug_overlay = NodePath("DebugOverlay")
+brush = SubResource("Resource_tbgi4")
+chunk_scene = ExtResource("3_bbnhl")
+
+[node name="DebugOverlay" parent="ChunkManager" instance=ExtResource("4_f17eg")]
+visible = false
+
+[node name="Cursor" type="MeshInstance3D" parent="ChunkManager"]
+mesh = SubResource("PlaneMesh_tipki")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8487318, 0.52882355, 0, -0.52882355, 0.8487318, 0, 0, 0)
+light_energy = 15.0
+light_specular = 0.0
+
+[node name="Player" parent="." instance=ExtResource("6_f31b2")]
+floor_stop_on_slope = false
+floor_max_angle = 3.1415927
+turn_speed = 50.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tefeu")
