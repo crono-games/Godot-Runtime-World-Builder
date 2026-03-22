@@ -43,7 +43,6 @@ var active_coords: Array[Vector2i] = []
 
 var current_color: Color = Color(1, 0, 0, 0)
 
-# Cached input mapping (initialized once)
 var input_map := {}
 
 # =========================================================
@@ -221,8 +220,7 @@ func _apply_texture_paint(world_pos: Vector3):
 # =========================================================
 
 func _place_prop(world_pos: Vector3):
-	#var scene = preload("res://assets/props/wall.tscn")
-	var scene : = ""
+	var scene = preload("res://assets/props/tree/tree.glb")
 	for chunk in _get_chunks_in_radius(world_pos, brush.radius_m):
 		chunk.add_prop(scene, world_pos)
 

@@ -216,7 +216,7 @@ offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "Left Click - Paint"
-text = "W"
+text = "E"
 
 [node name="TextureButton3" type="Button" parent="CanvasLayer" unique_id=1914323080]
 custom_minimum_size = Vector2(64, 64)
@@ -236,7 +236,7 @@ anchor_bottom = 1.0
 offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "E"
+text = "R"
 
 [node name="TextureButton4" type="Button" parent="CanvasLayer" unique_id=1115896978]
 custom_minimum_size = Vector2(64, 64)
@@ -257,4 +257,4 @@ anchor_bottom = 1.0
 offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "R"
+text = "T"
